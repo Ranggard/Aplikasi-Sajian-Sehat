@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "130461230394",
+    "project_id": "sajiansehat-6a12c",
+    "storage_bucket": "sajiansehat-6a12c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130461230394:android:fc4779d592c3bd6616dc03",
+        "android_client_info": {
+          "package_name": "com.rangga.sajiansehat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130461230394-0fhf6glieeakd167rm40c7mibcas405i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rangga.sajiansehat",
+            "certificate_hash": "139c2e957be162a0f921c244aed45a7e26d21225"
+          }
+        },
+        {
+          "client_id": "130461230394-i42enrrhtprc5e5gcr0vs26n9daifkc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTzmIQRMKsrMGyLhystHNgRSKW0ugaHoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130461230394-i42enrrhtprc5e5gcr0vs26n9daifkc2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SajianSehat</string>
+    <string name="choose_theme">Pilih Tema</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="theme_system">Ikuti Sistem</string>
+</resources>

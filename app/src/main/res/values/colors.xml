@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Theme: Primary (Green) -->
+    <color name="green_50">#F0FDF4</color>
+    <color name="green_100">#DCFCE7</color>
+    <color name="green_500">#22C55E</color>
+    <color name="green_600">#16A34A</color>
+    <color name="green_700">#15803D</color>
+    <color name="green_800">#166534</color>
+    <color name="green_900">#14532D</color>
+    
+    <!-- Theme: Accent (Orange) -->
+    <color name="orange_100">#FFEDD5</color>
+    <color name="orange_500">#F97316</color>
+    <color name="orange_600">#EA580C</color>
+    
+    <!-- Theme: Neutral/Backgrounds (Gray) -->
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_900">#111827</color>
+</resources>

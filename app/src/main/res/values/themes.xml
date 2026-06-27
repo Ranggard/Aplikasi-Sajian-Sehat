@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SajianSehat" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Main Brand Colors -->
+        <item name="colorPrimary">@color/green_600</item>
+        <item name="colorPrimaryVariant">@color/green_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Accent Colors -->
+        <item name="colorSecondary">@color/orange_500</item>
+        <item name="colorSecondaryVariant">@color/orange_600</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Backgrounds & Surfaces -->
+        <item name="android:windowBackground">@color/gray_50</item>
+        <item name="colorSurface">@color/white</item>
+        
+        <!-- Typography Colors -->
+        <item name="android:textColorPrimary">@color/gray_900</item>
+        <item name="android:textColorSecondary">@color/gray_500</item>
+    </style>
+
+    <style name="Theme.SajianSehat" parent="Base.Theme.SajianSehat" />
+</resources>

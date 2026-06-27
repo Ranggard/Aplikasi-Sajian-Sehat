@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pencarian Resep"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Mode Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih Mode Input Data"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleModeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedButton="@+id/btnModeTerstruktur"
+            android:layout_marginBottom="16dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnModeTerstruktur"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Terstruktur"
+                style="?attr/materialButtonOutlinedStyle" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnModeDeskripsi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Deskripsi Bebas"
+                style="?attr/materialButtonOutlinedStyle" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Container Mode Terstruktur -->
+        <LinearLayout
+            android:id="@+id/layoutTerstruktur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bahan yang dimiliki (Opsional)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alergi Makanan (Opsional)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAlergi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Kondisi Medis (Opsional)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etKesehatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pilih Tipe Diet"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginBottom="16dp">
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteDiet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Container Mode Deskripsi -->
+        <LinearLayout
+            android:id="@+id/layoutDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ceritakan kondisi, bahan, dan keinginan Anda"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDeskripsiBebas"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:lines="6" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/dividerHorizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Tipe Masakan dipindah ke bawah -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipe Masakan"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <RadioGroup
+            android:id="@+id/rgTipeMasakan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <RadioButton
+                android:id="@+id/rbNasional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indonesia" />
+            <RadioButton
+                android:id="@+id/rbInternasional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Internasional" />
+            <RadioButton
+                android:id="@+id/rbMix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mix"
+                android:checked="true" />
+        </RadioGroup>
+
+        <!-- Durasi dipindah ke bawah -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Durasi Rencana Makan"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+        <RadioGroup
+            android:id="@+id/rgDurasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <RadioButton
+                android:id="@+id/rb1Hari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Hari"
+                android:checked="true" />
+            <RadioButton
+                android:id="@+id/rb1Minggu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Minggu" />
+            <RadioButton
+                android:id="@+id/rb1Bulan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Bulan" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCariRekomendasi"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Analisis &amp; Cari Resep"
+            android:textSize="18sp"
+            app:cornerRadius="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutLoading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_marginBottom="8dp"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI sedang menganalisis..."
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBatalkan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batalkan"
+                style="?attr/materialButtonOutlinedStyle"
+                android:textColor="?attr/colorError"
+                app:strokeColor="?attr/colorError" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
