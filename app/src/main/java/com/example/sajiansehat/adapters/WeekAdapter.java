@@ -37,16 +37,20 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.WeekViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull WeekViewHolder holder, int position) {
+        // Display week number (1-indexed)
         holder.tvWeekLabel.setText("MINGGU " + (position + 1));
 
         if (position == selectedWeekIndex) {
+            // Active state: black pill background with white text
             holder.llWeekContainer.setBackgroundResource(R.drawable.bg_pill_black);
             holder.tvWeekLabel.setTextColor(holder.itemView.getContext().getColor(android.R.color.white));
         } else {
+            // Inactive state: gray pill background with gray text
             holder.llWeekContainer.setBackgroundResource(R.drawable.bg_pill_gray);
             holder.tvWeekLabel.setTextColor(holder.itemView.getContext().getColor(R.color.gray_500));
         }
 
+        // Handle week selection click
         holder.itemView.setOnClickListener(v -> {
             int previousIndex = selectedWeekIndex;
             selectedWeekIndex = holder.getAdapterPosition();

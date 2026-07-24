@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
 
         MaterialButton btnMulai = view.findViewById(R.id.btnMulaiCariResep);
         
+        // Switch to recommendation tab when user clicks search button
         btnMulai.setOnClickListener(v -> {
             if (getActivity() instanceof MainActivity) {
                 ((MainActivity) getActivity()).switchToRekomendasiTab();

@@ -8,6 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface ApiService {
+    // POST endpoint to request meal recommendations from API
     @POST("api/rekomendasi")
     Call<RekomendasiResponse> getRekomendasi(@Body RekomendasiRequest request);
 }

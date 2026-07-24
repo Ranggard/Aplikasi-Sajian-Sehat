@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode specific colors (if needed) -->
+    <!-- Most colors will inherit from main colors.xml -->
+    
+    <!-- Override for dark mode backgrounds -->
+    <color name="gray_50">#1F2937</color>
+    <color name="gray_100">#374151</color>
+</resources>

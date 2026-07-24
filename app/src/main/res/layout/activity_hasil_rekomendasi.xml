@@ -172,6 +172,54 @@
                 android:nestedScrollingEnabled="false"
                 android:clipToPadding="false" />
 
+            <!-- Restaurant Section (BARU) -->
+            <LinearLayout
+                android:id="@+id/layoutRestaurantSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="REKOMENDASI TEMPAT MAKAN"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvRestaurantHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="di Jakarta Pusat"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_600"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- No Result Message -->
+                <TextView
+                    android:id="@+id/tvNoRestaurantResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️ Rekomendasi Makan Lokasi tersebut tidak ada"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_600"
+                    android:visibility="gone" />
+
+                <!-- Restaurant List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRestaurants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false" />
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

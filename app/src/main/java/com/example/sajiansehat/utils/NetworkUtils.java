@@ -5,10 +5,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 public class NetworkUtils {
+    // Check if device is connected to internet (WiFi or mobile network)
     /**
-     * Mengecek apakah HP sedang terhubung ke internet (WiFi atau Seluler).
-     * @param context Context dari Activity atau Fragment.
-     * @return true jika internet tersedia, false jika offline.
+     * Check whether device is connected to internet (WiFi or mobile network).
+     * @param context Context from Activity or Fragment.
+     * @return true if internet is available, false if offline.
      */
     public static boolean isNetworkAvailable(Context context) {
         if (context == null) return false;

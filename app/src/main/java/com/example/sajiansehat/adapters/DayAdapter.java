@@ -36,13 +36,15 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         this.listener = listener;
     }
 
+    // Update day list when switching weeks (resets selection to first day)
     public void updateData(int totalDaysInWeek, int startDayOffset) {
         this.totalDaysInWeek = totalDaysInWeek;
         this.startDayOffset = startDayOffset;
-        this.selectedDayIndex = 0; // Reset selection to first day of the week
+        this.selectedDayIndex = 0; // Reset to first day of new week
         notifyDataSetChanged();
     }
 
+    // Get absolute day index of currently selected day
     public int getSelectedAbsoluteDayIndex() {
         return startDayOffset + selectedDayIndex;
     }
@@ -59,7 +61,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         int absoluteDayIndex = startDayOffset + position;
         int displayHariKe = absoluteDayIndex + 1;
 
-        // Calculate actual date
+        // Calculate actual calendar date for selected day
         Calendar calendar = Calendar.getInstance();
         if (startDate != null) {
             calendar.setTime(startDate);
@@ -68,7 +70,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
         Date targetDate = calendar.getTime();
 
         if (position == selectedDayIndex) {
-            // Active state (Green pill, show date)
+            // Active state: show green pill with full date information
             holder.llDayContainer.setBackgroundResource(R.drawable.bg_circle_green);
             
             SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", new Locale("id", "ID"));
@@ -77,7 +79,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             
             holder.tvDayName.setText(dayFormat.format(targetDate));
             holder.tvDayName.setTextColor(holder.itemView.getContext().getColor(android.R.color.white));
-            holder.tvDayName.setTextSize(10f); // Make it slightly smaller if it was big
+            holder.tvDayName.setTextSize(10f);
             
             holder.tvDateNumber.setText(numFormat.format(targetDate));
             holder.tvDateNumber.setVisibility(View.VISIBLE);
@@ -85,7 +87,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             holder.tvMonthYear.setText(monthYearFormat.format(targetDate).toUpperCase());
             holder.tvMonthYear.setVisibility(View.VISIBLE);
         } else {
-            // Inactive state (Outlined circle, show "HARI X")
+            // Inactive state: show outlined circle with day number
             holder.llDayContainer.setBackgroundResource(R.drawable.bg_circle_outlined);
             
             holder.tvDayName.setText("Hari " + displayHariKe);
@@ -96,6 +98,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.DayViewHolder> {
             holder.tvMonthYear.setVisibility(View.GONE);
         }
 
+        // Handle day selection click
         holder.itemView.setOnClickListener(v -> {
             int previousIndex = selectedDayIndex;
             selectedDayIndex = holder.getAdapterPosition();

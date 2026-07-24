@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash Screen Theme -->
+    <style name="SplashTheme" parent="Theme.SajianSehat">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+    <!-- Button Styles -->
+    <style name="ButtonPrimary" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/button_radius</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/text_lg</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="ButtonPrimaryPill" parent="ButtonPrimary">
+        <item name="cornerRadius">@dimen/button_radius_pill</item>
+        <item name="android:minHeight">@dimen/button_height_large</item>
+    </style>
+    
+    <!-- Card Styles -->
+    <style name="CardDefault" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">@dimen/elevation_card</item>
+    </style>
+    
+    <style name="CardFeature" parent="CardDefault">
+        <item name="cardCornerRadius">@dimen/card_radius_large</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+</resources>

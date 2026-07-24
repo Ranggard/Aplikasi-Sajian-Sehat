@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing Scale (Material Design 8dp grid) -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+    
+    <!-- Card & Radius -->
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_radius_large">20dp</dimen>
+    <dimen name="card_radius_small">12dp</dimen>
+    <dimen name="button_radius">12dp</dimen>
+    <dimen name="button_radius_pill">30dp</dimen>
+    
+    <!-- Elevation -->
+    <dimen name="elevation_card">2dp</dimen>
+    <dimen name="elevation_raised">4dp</dimen>
+    <dimen name="elevation_high">8dp</dimen>
+    
+    <!-- Text Sizes -->
+    <dimen name="text_xs">10sp</dimen>
+    <dimen name="text_sm">12sp</dimen>
+    <dimen name="text_md">14sp</dimen>
+    <dimen name="text_lg">16sp</dimen>
+    <dimen name="text_xl">18sp</dimen>
+    <dimen name="text_xxl">20sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_display">32sp</dimen>
+    
+    <!-- Icon Sizes -->
+    <dimen name="icon_sm">16dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_lg">32dp</dimen>
+    <dimen name="icon_xl">48dp</dimen>
+    
+    <!-- Button Heights -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_height_large">56dp</dimen>
+    
+    <!-- Avatar Sizes -->
+    <dimen name="avatar_sm">40dp</dimen>
+    <dimen name="avatar_md">72dp</dimen>
+    <dimen name="avatar_lg">96dp</dimen>
+</resources>

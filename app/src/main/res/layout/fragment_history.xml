@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSurface">
 
-    <!-- Konten Riwayat Asli (dibuat agak transparan jika terkunci, atau biarkan normal dan ditutupi overlay) -->
+    <!-- Konten Riwayat (dibuat agak transparan jika terkunci, atau biarkan normal dan ditutupi overlay) -->
     <LinearLayout
+        android:id="@+id/layout_logged_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -18,13 +20,57 @@
             android:text="Riwayat Scan Terakhir"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="?android:textColorPrimary" />
+            android:textColor="?android:textColorPrimary"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Filter Buttons -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleDurasiFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedButton="@+id/btnSemua"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSemua"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Semua"
+                style="?attr/materialButtonOutlinedStyle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1Hari"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1 Hari"
+                style="?attr/materialButtonOutlinedStyle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1Minggu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1 Minggu"
+                style="?attr/materialButtonOutlinedStyle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn1Bulan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1 Bulan"
+                style="?attr/materialButtonOutlinedStyle" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="8dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHistory"
@@ -36,47 +82,47 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
-    <!-- Overlay Terkunci -->
+    <!-- Overlay Terkunci - Konsisten dengan Rekomendasi -->
     <LinearLayout
         android:id="@+id/layout_locked_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DDFFFFFF"
-        android:gravity="center"
         android:orientation="vertical"
-        android:padding="32dp"
-        android:clickable="true"
-        android:focusable="true">
+        android:gravity="center"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:padding="24dp">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@android:drawable/ic_secure"
-            app:tint="@color/gray_500" />
+            android:src="@drawable/ic_lock"
+            android:contentDescription="Lock icon"
+            android:tint="@color/green_600"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Fitur Terkunci"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="Menu Terkunci"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:text="Silakan login terlebih dahulu untuk mengakses riwayat rekomendasi Anda"
+            android:textAppearance="?attr/textAppearanceBody1"
             android:gravity="center"
-            android:text="Silakan login terlebih dahulu untuk mengakses riwayat Anda."
-            android:textColor="?android:textColorSecondary" />
+            android:layout_marginBottom="24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLoginSekarang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_height="48dp"
             android:text="Login Sekarang"
-            app:cornerRadius="8dp" />
+            app:cornerRadius="24dp" />
+
     </LinearLayout>
 </FrameLayout>

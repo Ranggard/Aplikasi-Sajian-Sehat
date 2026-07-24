@@ -8,9 +8,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
+        android:layout_marginBottom="@dimen/spacing_md"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/elevation_card"
         app:strokeColor="@color/gray_100"
         app:strokeWidth="1dp">
 
@@ -29,7 +29,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:background="#E0E0E0" />
+                    android:background="@color/gray_100"
+                    android:src="@drawable/placeholder_recipe"
+                    android:contentDescription="@string/empty_recipe_title" />
 
                 <!-- Label Waktu Makan (Sarapan, dll) melayang di gambar -->
                 <TextView
@@ -37,24 +39,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|start"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginStart="@dimen/spacing_md"
                     android:background="@drawable/bg_rounded_black"
                     android:backgroundTint="@android:color/white"
-                    android:paddingHorizontal="12dp"
+                    android:paddingHorizontal="@dimen/spacing_md"
                     android:paddingVertical="6dp"
                     android:text="SARAPAN"
                     android:textColor="?attr/colorOnSurface"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/text_xs"
                     android:textStyle="bold"
-                    android:elevation="2dp"/>
+                    android:elevation="@dimen/elevation_card"/>
             </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/spacing_md">
 
                 <TextView
                     android:id="@+id/tvSumber"
@@ -62,38 +64,50 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_rounded_green"
                     android:backgroundTint="@color/green_100"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
+                    android:paddingHorizontal="@dimen/spacing_sm"
+                    android:paddingVertical="@dimen/spacing_xs"
                     android:text="Internasional"
                     android:textColor="@color/green_700"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_sm"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xs"
+                    android:text="📍 Jakarta, Pusat"
+                    android:textColor="@color/gray_600"
+                    android:textSize="@dimen/text_sm"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvJudulResep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/spacing_sm"
                     android:text="Judul Resep"
                     android:textColor="?android:textColorPrimary"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/text_xl"
+                    android:textStyle="bold"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
 
                 <TextView
                     android:id="@+id/tvNutrisi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/spacing_xs"
                     android:text="Kalori: 300 kcal • Protein: 15g"
                     android:textColor="?android:textColorSecondary"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/text_md" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="?attr/dividerHorizontal"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginBottom="@dimen/spacing_md"/>
 
                 <!-- Expandable Toggle Button -->
                 <LinearLayout
@@ -105,7 +119,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
-                    android:paddingVertical="8dp">
+                    android:paddingVertical="@dimen/spacing_sm">
 
                     <TextView
                         android:id="@+id/tvToggleText"
@@ -115,7 +129,7 @@
                         android:text="Lihat Resep &amp; Bahan"
                         android:textColor="@color/green_600"
                         android:textStyle="bold"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_md" />
 
                     <TextView
                         android:id="@+id/tvToggleIcon"
@@ -123,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:text="▼"
                         android:textColor="@color/green_600"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/text_md" />
                 </LinearLayout>
 
                 <!-- Expanded Content (Bahan & Langkah) -->
@@ -140,9 +154,9 @@
                         android:text="Bahan-bahan"
                         android:textColor="?attr/colorOnSurface"
                         android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="4dp"/>
+                        android:textSize="@dimen/text_md"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:layout_marginBottom="@dimen/spacing_xs"/>
 
                     <TextView
                         android:id="@+id/tvBahan"
@@ -150,8 +164,9 @@
                         android:layout_height="wrap_content"
                         android:text="- Bahan 1\n- Bahan 2"
                         android:textColor="?attr/colorOnSurfaceVariant"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="12dp"/>
+                        android:textSize="@dimen/text_md"
+                        android:lineSpacingExtra="@dimen/spacing_xs"
+                        android:layout_marginBottom="@dimen/spacing_md"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,6 +195,29 @@
                         style="?attr/materialButtonOutlinedStyle"
                         app:strokeColor="@color/orange_500"
                         android:textColor="@color/orange_600" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?attr/dividerHorizontal"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:layout_marginBottom="@dimen/spacing_md"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rekomendasi Tempat Makan"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_md"
+                        android:layout_marginBottom="@dimen/spacing_md"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRestaurantsInResep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:clipToPadding="false" />
                 </LinearLayout>
 
             </LinearLayout>

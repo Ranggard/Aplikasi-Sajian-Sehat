@@ -1,125 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="?attr/colorSurface">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-    <!-- Kontainer Profil (Selalu terlihat di belakang) -->
-    <LinearLayout
+    <!-- Main Content (Logged In State) -->
+    <ScrollView
         android:id="@+id/layout_logged_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="32dp"
-        android:visibility="visible">
+        android:fillViewport="true">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="40dp"
-            app:cardCornerRadius="60dp"
-            app:cardElevation="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_lg">
 
-            <ImageView
+            <!-- Profile Header Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/green_100"
-                android:padding="24dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                app:tint="@color/green_700" />
-        </com.google.android.material.card.MaterialCardView>
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/elevation_card"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/green_50"
+                android:layout_marginBottom="@dimen/spacing_lg">
 
-        <TextView
-            android:id="@+id/tvProfilNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Nama Pengguna"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg"
+                    android:gravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/tvProfilEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="email@domain.com"
-            android:textColor="?android:textColorSecondary"
-            android:textSize="16sp" />
+                    <!-- Profile Icon -->
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_person"
+                        android:background="@drawable/bg_circle_accent"
+                        android:padding="16dp"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        app:tint="@color/white" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+                    <!-- Profile Name -->
+                    <TextView
+                        android:id="@+id/tvProfilNama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Pengguna"
+                        android:textAppearance="?attr/textAppearanceHeadline5"
+                        android:textStyle="bold"
+                        android:textColor="@color/green_900"
+                        android:layout_marginBottom="@dimen/spacing_xs" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Keluar (Logout)"
-            android:textColor="@android:color/holo_red_dark"
-            app:cornerRadius="8dp"
-            app:strokeColor="@android:color/holo_red_dark" />
+                    <!-- Profile Email -->
+                    <TextView
+                        android:id="@+id/tvProfilEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="email@example.com"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="@color/green_700" />
 
-    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-    <!-- Overlay Terkunci -->
+            <!-- Profile Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/elevation_card"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/green_200"
+                android:layout_marginBottom="@dimen/spacing_lg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Informasi Profil"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold"
+                        android:textColor="@color/green_900"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <!-- Phone Number -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Telepon"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/tvTelepon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/green_100"
+                        android:layout_marginVertical="@dimen/spacing_sm" />
+
+                    <!-- Gender -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Jenis Kelamin"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/tvJenisKelamin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/green_100"
+                        android:layout_marginVertical="@dimen/spacing_sm" />
+
+                    <!-- Age -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Umur"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/tvUmur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/green_100"
+                        android:layout_marginVertical="@dimen/spacing_sm" />
+
+                    <!-- Height -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Tinggi Badan"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/tvTinggi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/green_100"
+                        android:layout_marginVertical="@dimen/spacing_sm" />
+
+                    <!-- Weight -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Berat Badan"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/tvBerat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfil"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_large"
+                android:text="Edit Profil"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/button_radius"
+                app:icon="@drawable/ic_edit"
+                app:iconGravity="textStart"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Locked Overlay (Not Logged In State) -->
     <LinearLayout
         android:id="@+id/layout_locked_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
-        android:padding="32dp"
-        android:background="#DDFFFFFF"
-        android:clickable="true"
-        android:focusable="true"
+        android:gravity="center"
+        android:padding="24dp"
+        android:background="@color/white"
         android:visibility="gone">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@android:drawable/ic_secure"
-            app:tint="@color/gray_500" />
+            android:src="@drawable/ic_lock"
+            android:contentDescription="Lock icon"
+            android:tint="@color/green_600"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Profil Terkunci"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:text="Menu Terkunci"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:text="Silakan login terlebih dahulu untuk mengakses dan mengelola profil Anda"
+            android:textAppearance="?attr/textAppearanceBody1"
             android:gravity="center"
-            android:text="Silakan login terlebih dahulu untuk mengakses profil Anda."
-            android:textColor="?android:textColorSecondary" />
+            android:layout_marginBottom="24dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLoginSekarang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_height="48dp"
             android:text="Login Sekarang"
-            app:cornerRadius="8dp" />
+            app:cornerRadius="24dp" />
+
     </LinearLayout>
 
-    </FrameLayout>
-
-
-
-</LinearLayout>
+</FrameLayout>

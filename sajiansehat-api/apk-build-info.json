@@ -1,0 +1,90 @@
+{
+  "build": {
+    "date": "2026-07-15",
+    "timestamp": "2026-07-15T12:05:00Z",
+    "status": "success",
+    "duration_seconds": 76,
+    "version": "1.1.0"
+  },
+  "apk": {
+    "filename": "SajianSehat-v1.1.apk",
+    "size_mb": 10.84,
+    "size_bytes": 10845295,
+    "location": "SajianSehat/app/build/outputs/apk/release/",
+    "format": "APK",
+    "type": "Release",
+    "buildType": "releaseRuntimeClasspath",
+    "build_time_seconds": 76,
+    "signed": true,
+    "verified": true
+  },
+  "keystore": {
+    "filename": "sajiansehat.keystore",
+    "location": "SajianSehat/",
+    "storePassword": "sajiansehat123",
+    "keyPassword": "sajiansehat123",
+    "keyAlgorithm": "RSA",
+    "keySize": 2048,
+    "validity_days": 10000,
+    "expiry_date": "2053-11-23",
+    "alias": "sajiansehat",
+    "type": "PKCS12"
+  },
+  "certificate": {
+    "algorithm": "SHA256withRSA",
+    "digestAlgorithm": "SHA-256",
+    "self_signed": true,
+    "distinguished_name": {
+      "CN": "Sajian Sehat",
+      "OU": "Development",
+      "O": "SajianSehat",
+      "L": "Indonesia",
+      "ST": "Indonesia",
+      "C": "ID"
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "signed": true,
+    "integrity": "valid",
+    "warnings": [
+      "Certificate is self-signed (acceptable for development)",
+      "No timestamp included",
+      "POSIX file permissions detected"
+    ]
+  },
+  "build_configuration": {
+    "gradle_version": "9.3.1",
+    "build_tool_version": "9.3.1",
+    "min_sdk": "configured in build.gradle.kts",
+    "target_sdk": "configured in build.gradle.kts",
+    "compression_enabled": true,
+    "dex_compression_enabled": true,
+    "resource_optimization": true
+  },
+  "gradle_tasks": {
+    "executed": 44,
+    "up_to_date": 1,
+    "total": 45
+  },
+  "installation": {
+    "adb_command": "adb install SajianSehat/app/build/outputs/apk/release/SajianSehat-v1.1.apk",
+    "verify_command": "jarsigner -verify SajianSehat/app/build/outputs/apk/release/SajianSehat-v1.1.apk",
+    "resign_command": "jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore SajianSehat/sajiansehat.keystore -storepass sajiansehat123 -keypass sajiansehat123 SajianSehat/app/build/outputs/apk/release/SajianSehat-v1.1.apk sajiansehat"
+  },
+  "distribution": {
+    "ready_for_testing": true,
+    "ready_for_play_store": false,
+    "notes": "Self-signed keystore is suitable for development and testing. For Play Store, ensure keystore is kept secure and used consistently for all updates."
+  },
+  "security": {
+    "keystore_security_level": "development",
+    "recommendations": [
+      "Keep keystore file secure - do not commit to public repositories",
+      "Back up keystore to secure location",
+      "For production, use Play Signing service",
+      "Add timestamp for production builds",
+      "Use separate certificate for Play Store releases"
+    ]
+  }
+}

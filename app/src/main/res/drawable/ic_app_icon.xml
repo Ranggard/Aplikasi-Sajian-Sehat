@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- White Background with green gradient effect -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,0h108v108h-108z"/>
+    
+    <!-- Heart Shape - White outline -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M54,30 C54,25 50,20 45,20 C42,20 40,22 39,24.5 C38,22 36,20 33,20 C28,20 24,25 24,30 C24,38 39,50 39,50 C39,50 54,38 54,30 Z M54,30 C54,25 58,20 63,20 C66,20 68,22 69,24.5 C70,22 72,20 75,20 C80,20 84,25 84,30 C84,38 69,50 69,50 C69,50 54,38 54,30 Z"/>
+    
+    <!-- Fork (White, Left side) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M32,42 L32,68 M26,55 L38,55 M26,62 L38,62 M28,42 Q28,48 32,50 Q36,48 36,42"/>
+    
+    <!-- Spoon (White, Right side) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M76,42 Q72,42 70,46 Q70,52 76,52 Q82,52 82,46 Q80,42 76,42 Z"/>
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M76,52 L76,68"/>
+    
+    <!-- Heartbeat line (Orange) -->
+    <path
+        android:strokeColor="#F97316"
+        android:strokeWidth="2.5"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M28,35 L35,35 L38,29 L42,38 L45,35 L80,35"/>
+    
+    <!-- Leaf Accents (Orange abstract lines) -->
+    <path
+        android:strokeColor="#F97316"
+        android:strokeWidth="1.5"
+        android:fillColor="@android:color/transparent"
+        android:strokeLineCap="round"
+        android:pathData="M20,75 Q25,80 30,75 Q35,80 40,75"/>
+    <path
+        android:strokeColor="#F97316"
+        android:strokeWidth="1"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M45,78 L50,76 L48,82"/>
+</vector>

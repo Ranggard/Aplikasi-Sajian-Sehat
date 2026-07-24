@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,15 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.sajiansehat.models.UserProfile;
+import com.example.sajiansehat.utils.ProfileManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
-    private LinearLayout layoutLockedOverlay, layoutLoggedIn;
-    private TextView tvProfilNama, tvProfilEmail;
-    private MaterialButton btnLoginSekarang, btnLogout;
+    private FrameLayout layoutMain;
+    private ScrollView layoutLoggedIn;
+    private LinearLayout layoutLockedOverlay;
+    private TextView tvProfilNama, tvProfilEmail, tvJenisKelamin, tvUmur, tvTinggi, tvBerat, tvTelepon;
+    private MaterialButton btnLoginSekarang, btnEditProfil;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -31,28 +37,37 @@ public class ProfileFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-        // Bind Views
+        // Bind UI views from layout
+        layoutMain = view.findViewById(R.id.layoutMain);
         layoutLockedOverlay = view.findViewById(R.id.layout_locked_overlay);
         layoutLoggedIn = view.findViewById(R.id.layout_logged_in);
         tvProfilNama = view.findViewById(R.id.tvProfilNama);
         tvProfilEmail = view.findViewById(R.id.tvProfilEmail);
+        tvJenisKelamin = view.findViewById(R.id.tvJenisKelamin);
+        tvUmur = view.findViewById(R.id.tvUmur);
+        tvTinggi = view.findViewById(R.id.tvTinggi);
+        tvBerat = view.findViewById(R.id.tvBerat);
+        tvTelepon = view.findViewById(R.id.tvTelepon);
         btnLoginSekarang = view.findViewById(R.id.btnLoginSekarang);
-        btnLogout = view.findViewById(R.id.btnLogout);
+        btnEditProfil = view.findViewById(R.id.btnEditProfil);
 
         updateUI();
 
-        // Tombol Login
-        btnLoginSekarang.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), LoginActivity.class);
-            startActivity(intent);
-        });
+        // Login button
+        if (btnLoginSekarang != null) {
+            btnLoginSekarang.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                startActivity(intent);
+            });
+        }
 
-        // Tombol Logout
-        btnLogout.setOnClickListener(v -> {
-            mAuth.signOut();
-            Toast.makeText(requireContext(), "Berhasil logout", Toast.LENGTH_SHORT).show();
-            updateUI(); // Segarkan tampilan ke mode belum login
-        });
+        // Edit profile button
+        if (btnEditProfil != null) {
+            btnEditProfil.setOnClickListener(v -> {
+                Intent intent = new Intent(requireContext(), EditProfileActivity.class);
+                startActivity(intent);
+            });
+        }
 
         return view;
     }
@@ -60,30 +75,60 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        updateUI(); // Pastikan UI diupdate saat fragment kembali tampil (misal habis login)
+        updateUI();
     }
 
     private void updateUI() {
+        // Check if all views are initialized
+        if (tvProfilNama == null || tvProfilEmail == null || layoutLockedOverlay == null || layoutLoggedIn == null) {
+            return;
+        }
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        // Layout profil selalu dibiarkan terlihat di belakang
         layoutLoggedIn.setVisibility(View.VISIBLE);
         
         if (currentUser != null) {
-            // Sudah Login
             layoutLockedOverlay.setVisibility(View.GONE);
-
-            String email = currentUser.getEmail();
-            String name = currentUser.getDisplayName();
-
-            if (name == null || name.isEmpty()) {
-                name = "Pengguna Sajian Sehat";
+            if (btnEditProfil != null) {
+                btnEditProfil.setVisibility(View.VISIBLE);
             }
+
+            UserProfile profile = ProfileManager.getProfile(requireContext());
+            
+            // Display name from local profile storage
+            String name = profile.getNama() != null && !profile.getNama().isEmpty() 
+                ? profile.getNama() 
+                : (currentUser.getDisplayName() != null ? currentUser.getDisplayName() : "Pengguna");
+            
+            // Display email from Firebase
+            String email = currentUser.getEmail() != null ? currentUser.getEmail() : "";
 
             tvProfilNama.setText(name);
             tvProfilEmail.setText(email);
+            
+            if (tvTelepon != null) {
+                tvTelepon.setText(profile.getTelepon() != null && !profile.getTelepon().isEmpty() ? 
+                                 profile.getTelepon() : "-");
+            }
+            if (tvJenisKelamin != null) {
+                tvJenisKelamin.setText(profile.getJenisKelamin() != null && !profile.getJenisKelamin().isEmpty() ? 
+                                      profile.getJenisKelamin() : "-");
+            }
+            if (tvUmur != null) {
+                tvUmur.setText(profile.getUmur() > 0 ? profile.getUmur() + " tahun" : "-");
+            }
+            if (tvTinggi != null) {
+                tvTinggi.setText(profile.getTinggi() > 0 ? profile.getTinggi() + " cm" : "-");
+            }
+            if (tvBerat != null) {
+                tvBerat.setText(profile.getBerat() > 0 ? profile.getBerat() + " kg" : "-");
+            }
+
         } else {
-            // Belum Login
             layoutLockedOverlay.setVisibility(View.VISIBLE);
+            if (btnEditProfil != null) {
+                btnEditProfil.setVisibility(View.GONE);
+            }
             
             tvProfilNama.setText("Pengguna Tamu");
             tvProfilEmail.setText("Belum login");

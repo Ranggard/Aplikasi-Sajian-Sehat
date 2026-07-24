@@ -40,9 +40,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
         HistoryItem item = historyList.get(position);
         
+        // Display meal type and duration in compact format
         String title = capitalize(item.getTipe()) + " • " + formatDurasi(item.getDurasi());
         holder.tvTipeDurasi.setText(title);
 
+        // Format and display save timestamp
         if (item.getTimestamp() != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy - HH:mm", new Locale("id", "ID"));
             holder.tvTimestamp.setText(sdf.format(item.getTimestamp().toDate()));
@@ -50,6 +52,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             holder.tvTimestamp.setText("-");
         }
 
+        // Handle item click to view recommendation details
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(item);
@@ -62,16 +65,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         return historyList.size();
     }
 
+    // Update adapter data and refresh UI
     public void updateData(List<HistoryItem> newList) {
         this.historyList = newList;
         notifyDataSetChanged();
     }
 
+    // Capitalize first letter of string
     private String capitalize(String str) {
         if (str == null || str.isEmpty()) return "";
         return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 
+    // Format duration key to display text
     private String formatDurasi(String durasi) {
         if (durasi == null) return "";
         switch (durasi) {

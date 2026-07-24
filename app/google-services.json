@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "130461230394",
+    "firebase_url": "https://sajiansehat-6a12c-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "sajiansehat-6a12c",
     "storage_bucket": "sajiansehat-6a12c.firebasestorage.app"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.rangga.sajiansehat",
             "certificate_hash": "139c2e957be162a0f921c244aed45a7e26d21225"
+          }
+        },
+        {
+          "client_id": "130461230394-62o48uqqqankeci0ntb1iln88torc6k3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rangga.sajiansehat",
+            "certificate_hash": "9465b00ff3dd80851e91ba8e0bea5e6572c8bdf6"
           }
         },
         {

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutMain"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/layout_logged_in"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Deskripsi Bebas"
+                android:text="Deskripsi"
                 style="?attr/materialButtonOutlinedStyle" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -58,12 +64,102 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Section Data Profil Wajib -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Pribadi (Wajib Diisi) *"
+                android:textStyle="bold"
+                android:textColor="@color/green_700"
+                android:layout_marginBottom="12dp"
+                android:textSize="14sp" />
+
+            <!-- Jenis Kelamin -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Jenis Kelamin *"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_marginBottom="12dp">
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Umur -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Umur (tahun) *"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUmurRekomendasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tinggi Badan -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tinggi Badan (cm) *"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTinggiRekomendasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Berat Badan -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Berat Badan (kg) *"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBeratRekomendasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Checkbox Simpan ke Profil -->
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/cbSimpanKeProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Simpan data ke profil saya"
+                android:layout_marginBottom="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green_100"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Section Data Kondisi &amp; Preferensi -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kondisi &amp; Preferensi Makanan"
+                android:textStyle="bold"
+                android:textColor="@color/green_700"
+                android:layout_marginBottom="12dp"
+                android:textSize="14sp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Bahan yang dimiliki (Opsional)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="12dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etBahan"
                     android:layout_width="match_parent"
@@ -75,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Alergi Makanan (Opsional)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="12dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAlergi"
                     android:layout_width="match_parent"
@@ -87,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Kondisi Medis (Opsional)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="12dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etKesehatan"
                     android:layout_width="match_parent"
@@ -116,10 +212,28 @@
             android:orientation="vertical"
             android:visibility="gone">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ceritakan kondisi Anda (Wajib Diisi) *"
+                android:textStyle="bold"
+                android:textColor="@color/green_700"
+                android:layout_marginBottom="8dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contoh: Saya mahasiswa laki-laki berusia 22 tahun, tinggi 170 cm, berat 65 kg. Saya vegetarian dan alergi terhadap kacang-kacangan. Saya punya bahan telur, nasi, sayuran hijau. Saya ingin menu yang bergizi dan membantu menurunkan berat badan."
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textStyle="italic"
+                android:layout_marginBottom="12dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ceritakan kondisi, bahan, dan keinginan Anda"
+                android:hint="Ceritakan kondisi, bahan, dan keinginan Anda *"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -139,7 +253,54 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Tipe Masakan dipindah ke bawah -->
+        <!-- Location Section (BARU) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lokasi (Opsional)"
+            android:textStyle="bold"
+            android:textColor="@color/green_700"
+            android:layout_marginBottom="12dp"
+            android:textSize="14sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lokasi Saat Ini"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:drawableEnd="@drawable/ic_location_on_24"
+                android:drawablePadding="8dp"
+                android:focusable="false"
+                android:clickable="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGetLocation"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="📍 Gunakan Lokasi Saat Ini"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginBottom="12dp" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbExcludeLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jangan kirim lokasi"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/dividerHorizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -252,3 +413,49 @@
 
     </LinearLayout>
 </ScrollView>
+
+<!-- Lock Overlay when not logged in -->
+<LinearLayout
+    android:id="@+id/layout_locked_overlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white"
+    android:visibility="gone"
+    android:padding="24dp">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_lock"
+        android:contentDescription="Lock icon"
+        android:tint="@color/green_600"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu Terkunci"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Silakan login terlebih dahulu untuk mengakses fitur pencarian resep"
+        android:textAppearance="?attr/textAppearanceBody1"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginSekarang"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Login Sekarang"
+        app:cornerRadius="24dp" />
+
+</LinearLayout>
+
+</FrameLayout>

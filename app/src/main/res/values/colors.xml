@@ -7,6 +7,8 @@
     <!-- Theme: Primary (Green) -->
     <color name="green_50">#F0FDF4</color>
     <color name="green_100">#DCFCE7</color>
+    <color name="green_200">#BBF7D0</color>
+    <color name="green_300">#86EFAC</color>
     <color name="green_500">#22C55E</color>
     <color name="green_600">#16A34A</color>
     <color name="green_700">#15803D</color>
@@ -14,9 +16,12 @@
     <color name="green_900">#14532D</color>
     
     <!-- Theme: Accent (Orange) -->
+    <color name="orange_50">#FFF7ED</color>
     <color name="orange_100">#FFEDD5</color>
+    <color name="orange_200">#FED7AA</color>
     <color name="orange_500">#F97316</color>
     <color name="orange_600">#EA580C</color>
+    <color name="orange_700">#C2410C</color>
     
     <!-- Theme: Neutral/Backgrounds (Gray) -->
     <color name="gray_50">#F9FAFB</color>
@@ -26,4 +31,8 @@
     <color name="gray_600">#4B5563</color>
     <color name="gray_800">#1F2937</color>
     <color name="gray_900">#111827</color>
+    
+    <!-- Semantic Colors -->
+    <color name="red_500">#EF4444</color>
+    <color name="red_600">#DC2626</color>
 </resources>

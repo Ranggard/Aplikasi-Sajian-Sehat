@@ -1,5 +1,6 @@
 package com.example.sajiansehat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -7,68 +8,76 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.graphics.Typeface;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.PopupMenu;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.sajiansehat.utils.ThemeHelper;
+import com.example.sajiansehat.utils.ProfileManager;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private MaterialToolbar toolbar;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setup Toolbar
+        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize toolbar with colored title
         toolbar = findViewById(R.id.toolbar);
         setupToolbarTitle();
-        updateThemeIcon();
+        updateAuthIcon();
 
-        // Handle theme menu click
+    // Set logout menu click listener
         toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.action_theme) {
-                showThemePopup(toolbar.findViewById(R.id.action_theme));
+            if (item.getItemId() == R.id.action_logout) {
+                handleLogout();
+                return true;
+            } else if (item.getItemId() == R.id.action_login) {
+                handleLogin();
                 return true;
             }
             return false;
         });
 
-        // Setup Bottom Navigation
+        // Initialize bottom navigation with fragment switching
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListener);
 
-        // Secara default, tampilkan halaman Beranda saat pertama kali dibuka
+        // Load home fragment on first app launch
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
         }
     }
 
-    /**
-     * Setup judul toolbar dengan teks berwarna: "Sajian" (orange) + "Sehat" (green)
-     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAuthIcon();
+    }
+
+    // Create toolbar title with dual-color text: orange "Sajian" + green "Sehat" in bold
     private void setupToolbarTitle() {
         toolbar.setTitle("");
 
-        // Buat SpannableString "SajianSehat"
         String fullTitle = "SajianSehat";
         SpannableString spannable = new SpannableString(fullTitle);
 
-        // "Sajian" (index 0-6) → Orange + Bold
+        // Apply orange color and bold styling to "Sajian" (first 6 characters)
         int orangeColor = ContextCompat.getColor(this, R.color.orange_500);
         spannable.setSpan(new ForegroundColorSpan(orangeColor), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        // "Sehat" (index 6-11) → Green + Bold
+        // Apply green color and bold styling to "Sehat" (last 5 characters)
         int greenColor = ContextCompat.getColor(this, R.color.green_600);
         spannable.setSpan(new ForegroundColorSpan(greenColor), 6, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannable.setSpan(new StyleSpan(Typeface.BOLD), 6, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -76,55 +85,64 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle(spannable);
     }
 
-    /**
-     * Update ikon tema di toolbar sesuai mode yang tersimpan
-     */
-    private void updateThemeIcon() {
-        int currentTheme = ThemeHelper.getSavedTheme(this);
-        MenuItem themeItem = toolbar.getMenu().findItem(R.id.action_theme);
-        if (themeItem != null) {
-            switch (currentTheme) {
-                case ThemeHelper.THEME_LIGHT:
-                    themeItem.setIcon(R.drawable.ic_theme_light);
-                    break;
-                case ThemeHelper.THEME_DARK:
-                    themeItem.setIcon(R.drawable.ic_theme_dark);
-                    break;
-                case ThemeHelper.THEME_SYSTEM:
-                default:
-                    themeItem.setIcon(R.drawable.ic_theme_system);
-                    break;
+    // Update login/logout icon visibility based on login state
+    private void updateAuthIcon() {
+        MenuItem logoutItem = toolbar.getMenu().findItem(R.id.action_logout);
+        MenuItem loginItem = toolbar.getMenu().findItem(R.id.action_login);
+        
+        if (logoutItem != null && loginItem != null) {
+            boolean isLoggedIn = mAuth.getCurrentUser() != null;
+            
+            if (isLoggedIn) {
+                logoutItem.setVisible(true);
+                loginItem.setVisible(false);
+                // Set logout icon tint to red when visible
+                logoutItem.getIcon().setTint(ContextCompat.getColor(this, R.color.red_500));
+            } else {
+                logoutItem.setVisible(false);
+                loginItem.setVisible(true);
+                // Set login icon tint to green when visible
+                loginItem.getIcon().setTint(ContextCompat.getColor(this, R.color.green_600));
             }
         }
     }
 
-    /**
-     * Tampilkan PopupMenu dengan 3 pilihan tema
-     */
-    private void showThemePopup(View anchor) {
-        PopupMenu popup = new PopupMenu(this, anchor);
-        popup.getMenu().add(0, 1, 0, getString(R.string.theme_light));
-        popup.getMenu().add(0, 2, 1, getString(R.string.theme_dark));
-        popup.getMenu().add(0, 3, 2, getString(R.string.theme_system));
-
-        int currentTheme = ThemeHelper.getSavedTheme(this);
-
-        popup.setOnMenuItemClickListener(menuItem -> {
-            int itemId = menuItem.getItemId();
-            if (itemId == 1) {
-                ThemeHelper.setTheme(this, ThemeHelper.THEME_LIGHT);
-            } else if (itemId == 2) {
-                ThemeHelper.setTheme(this, ThemeHelper.THEME_DARK);
-            } else if (itemId == 3) {
-                ThemeHelper.setTheme(this, ThemeHelper.THEME_SYSTEM);
-            }
-            updateThemeIcon();
-            return true;
-        });
-
-        popup.show();
+    // Handle logout action with confirmation dialog
+    private void handleLogout() {
+        if (mAuth.getCurrentUser() != null) {
+            // Show confirmation dialog before logout
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setTitle("Logout?")
+                    .setMessage("Apakah Anda yakin ingin logout dari aplikasi?")
+                    .setPositiveButton("Ya, Logout", (dialog, which) -> {
+                        // Perform logout
+                        mAuth.signOut();
+                        ProfileManager.clearProfile(this);
+                        Toast.makeText(MainActivity.this, "Berhasil logout", Toast.LENGTH_SHORT).show();
+                        updateAuthIcon();
+                        
+                        // Navigate to HomeFragment and select home tab
+                        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+                        bottomNav.setSelectedItemId(R.id.nav_home);
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, new HomeFragment())
+                                .commit();
+                    })
+                    .setNegativeButton("Batal", (dialog, which) -> {
+                        // User cancelled logout
+                        dialog.dismiss();
+                    })
+                    .show();
+        }
     }
 
+    // Handle login action
+    private void handleLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    // Switch between navigation fragments when bottom menu item is selected
     private BottomNavigationView.OnItemSelectedListener navListener =
             item -> {
                 Fragment selectedFragment = null;
@@ -140,10 +158,15 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ProfileFragment();
                 }
 
+                // Replace fragment in container if valid fragment selected
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
                 }
+                
+                // Update auth icon visibility
+                updateAuthIcon();
+                
                 return true;
             };
 

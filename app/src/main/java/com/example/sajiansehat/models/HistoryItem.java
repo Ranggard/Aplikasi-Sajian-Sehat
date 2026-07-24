@@ -9,10 +9,12 @@ public class HistoryItem {
     private String tipe;
     private String json_data;
 
+    // Required empty constructor for Firestore document deserialization
     public HistoryItem() {
         // Required empty public constructor for Firestore
     }
 
+    // Constructor with all fields for history item creation
     public HistoryItem(String id, Timestamp timestamp, String durasi, String tipe, String json_data) {
         this.id = id;
         this.timestamp = timestamp;

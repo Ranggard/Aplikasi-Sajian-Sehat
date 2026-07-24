@@ -1,12 +1,13 @@
 package com.example.sajiansehat;
 
 import android.app.Application;
-import com.example.sajiansehat.utils.ThemeHelper;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class SajianSehatApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ThemeHelper.applyTheme(this);
+        // Force light mode - disable system theme following
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 }

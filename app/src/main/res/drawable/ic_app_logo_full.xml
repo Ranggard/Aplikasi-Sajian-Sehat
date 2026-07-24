@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="80dp"
+    android:viewportWidth="200"
+    android:viewportHeight="80">
+    
+    <!-- Icon Circle -->
+    <path
+        android:fillColor="#22C55E"
+        android:pathData="M40,40m-28,0a28,28 0,1 1,56 0a28,28 0,1 1,-56 0"/>
+    
+    <!-- Fork -->
+    <group android:translateX="28" android:translateY="32">
+        <path
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M0,-6 L0,0 M-3,-3 L3,-3 M0,0 L0,14 M-3,14 L3,14 M-3,10 L3,10 M-3,6 L3,6"/>
+    </group>
+    
+    <!-- Spoon -->
+    <group android:translateX="52" android:translateY="32">
+        <path
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:pathData="M0,-3 Q0,0 0,1 L0,14"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,-3 m-3,0 a3,3 0 1,1 6,0 a3,3 0 1,1 -6,0"/>
+    </group>
+    
+    <!-- Text "Sajian" (Orange) -->
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M85,35 Q85,28 90,25 Q95,22 100,25 Q103,27 103,30 L100,30 Q100,28 98,27 Q95,25 92,27 Q88,29 88,35 Q88,41 92,43 Q95,45 98,43 Q100,42 100,40 L103,40 Q103,43 100,45 Q95,48 90,45 Q85,42 85,35 Z"/>
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M105,35 Q105,30 108,27 Q112,24 116,27 L116,24 L119,24 L119,46 L116,46 L116,43 Q112,46 108,43 Q105,40 105,35 Z M108,35 Q108,40 111,42 Q114,44 117,42 L117,28 Q114,26 111,28 Q108,30 108,35 Z"/>
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M122,48 L122,24 L125,24 L125,48 Z M122,52 L125,52 L125,49 L122,49 Z"/>
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M128,24 L131,24 L131,48 L128,48 Z"/>
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M134,35 Q134,30 137,27 Q141,24 145,27 L145,24 L148,24 L148,46 L145,46 L145,43 Q141,46 137,43 Q134,40 134,35 Z M137,35 Q137,40 140,42 Q143,44 146,42 L146,28 Q143,26 140,28 Q137,30 137,35 Z"/>
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M151,24 L154,24 L154,28 Q157,24 162,24 Q166,24 168,27 Q170,30 170,34 L170,46 L167,46 L167,34 Q167,31 165,29 Q163,27 160,29 Q157,31 154,34 L154,46 L151,46 Z"/>
+    
+    <!-- Text "Sehat" (Green) -->
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M85,55 Q85,48 90,45 Q95,42 100,45 Q103,47 103,50 L100,50 Q100,48 98,47 Q95,45 92,47 Q88,49 88,55 Q88,61 92,63 Q95,65 98,63 Q100,62 100,60 L103,60 Q103,63 100,65 Q95,68 90,65 Q85,62 85,55 Z"/>
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M105,55 Q105,50 108,47 Q111,44 115,47 Q118,50 118,55 Q118,60 115,63 Q111,66 108,63 Q105,60 105,55 Z M108,55 Q108,59 110,61 Q113,63 115,61 Q117,59 117,55 Q117,51 115,49 Q113,47 110,49 Q108,51 108,55 Z"/>
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M121,38 L124,38 L124,42 Q127,38 132,38 Q136,38 138,41 Q140,44 140,48 L140,66 L137,66 L137,48 Q137,45 135,43 Q133,41 130,43 Q127,45 124,48 L124,66 L121,66 Z"/>
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M143,55 Q143,50 146,47 Q150,44 154,47 L154,44 L157,44 L157,66 L154,66 L154,63 Q150,66 146,63 Q143,60 143,55 Z M146,55 Q146,60 149,62 Q152,64 155,62 L155,48 Q152,46 149,48 Q146,50 146,55 Z"/>
+    <path
+        android:fillColor="#16A34A"
+        android:pathData="M160,44 L163,44 L163,50 L168,50 L168,44 L171,44 L171,66 L168,66 L168,53 L163,53 L163,66 L160,66 Z"/>
+</vector>
