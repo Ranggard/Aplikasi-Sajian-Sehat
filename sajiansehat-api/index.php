@@ -27,9 +27,6 @@ $GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
 $SPOONACULAR_API_KEY = "YOUR_SPOONACULAR_API_KEY";
 
 // Valid API Keys untuk Authentication dari Android App
-// Generate dengan script generateApiKey.js
-// Format: SS_[random]_[timestamp]
-// Multiple keys dipisah dengan koma
 $VALID_API_KEYS = [
     // KOSONG UNTUK TESTING (development mode)
 ];

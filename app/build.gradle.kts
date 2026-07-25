@@ -5,18 +5,14 @@ plugins {
 
 android {
     namespace = "com.example.sajiansehat"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.rangga.sajiansehat"
         minSdk = 24
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 1
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
@@ -45,30 +41,12 @@ android {
         }
     }
 
-    // Custom APK naming
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 
-    val versionName = "1.1"
-    afterEvaluate {
-        tasks.matching { it.name.contains("bundle") || it.name.contains("assemble") }.all {
-            val task = this
-            if (task.name.contains("Release")) {
-                task.doLast {
-                    val buildDir = layout.buildDirectory.get().asFile
-                    val apkDir = File(buildDir, "outputs/apk/release")
-                    if (apkDir.exists()) {
-                        apkDir.listFiles()?.filter { it.name.endsWith(".apk") }?.forEach { apk ->
-                            apk.renameTo(File(apkDir, "SajianSehat-v${versionName}.apk"))
-                        }
-                    }
-                }
-            }
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -80,6 +58,19 @@ android {
     
     lint {
         disable.add("UseAppTint")
+    }
+}
+
+afterEvaluate {
+    tasks.named("assembleRelease").configure {
+        doLast {
+            val releaseDir = layout.buildDirectory.dir("outputs/apk/release").get().asFile
+            val srcFile = File(releaseDir, "app-release.apk")
+            val destFile = File(releaseDir, "SajianSehat-v1.0.apk")
+            if (srcFile.exists()) {
+                srcFile.copyTo(destFile, overwrite = true)
+            }
+        }
     }
 }
 

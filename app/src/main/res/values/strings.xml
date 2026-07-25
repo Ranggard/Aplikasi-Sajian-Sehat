@@ -11,4 +11,30 @@
     <string name="empty_recipe_message">Mulai cari rekomendasi makanan sehat untuk Anda</string>
     <string name="start_now">Mulai Sekarang</string>
     <string name="lock_icon">Lock icon</string>
+
+    <!-- HasilRekomendasiActivity -->
+    <string name="btn_show_detail">Show Detail</string>
+    <string name="btn_hide_detail">Hide Detail</string>
+    <string name="btn_hapus_rekomendasi">Hapus Rekomendasi</string>
+    <string name="btn_simpan_menu">Simpan Menu</string>
+    <string name="btn_menyimpan">Menyimpan…</string>
+    <string name="btn_saved">Saved</string>
+    <string name="btn_menghapus">Menghapus…</string>
+    <string name="msg_login_required_simpan">Anda harus login untuk menyimpan rekomendasi!</string>
+    <string name="msg_login_required_hapus">Anda harus login untuk menghapus rekomendasi!</string>
+    <string name="msg_berhasil_disimpan">Rekomendasi berhasil disimpan</string>
+    <string name="msg_berhasil_dihapus">Rekomendasi berhasil dihapus</string>
+    <string name="msg_tidak_ada_resep">Tidak ada resep ditemukan.</string>
+    <string name="msg_data_kosong">Data rekomendasi kosong!</string>
+    <string name="dialog_hapus_title">Hapus Rekomendasi?</string>
+    <string name="dialog_hapus_message">Apakah Anda yakin ingin menghapus rekomendasi ini dari riwayat?</string>
+    <string name="dialog_ya_hapus">Ya, Hapus</string>
+    <string name="dialog_tidak">Tidak</string>
+    <string name="tidak_bisa_buka_maps">Tidak bisa membuka Maps</string>
+    <string name="msg_gagal_simpan">Gagal menyimpan: </string>
+    <string name="msg_gagal_hapus">Gagal menghapus: </string>
+    <string name="format_tanggal_range">%1$s - %2$s</string>
+    <string name="format_lokasi_header">di %1$s</string>
+    <string name="format_no_restaurant_location">⚠️ Rekomendasi Makan Lokasi %1$s tersebut tidak ada</string>
+    <string name="msg_no_restaurant">⚠️ Rekomendasi Makan tersebut tidak ada</string>
 </resources>
